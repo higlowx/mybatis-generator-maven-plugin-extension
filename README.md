@@ -1,0 +1,1 @@
+# Mybatis Generator Plugins Extension
