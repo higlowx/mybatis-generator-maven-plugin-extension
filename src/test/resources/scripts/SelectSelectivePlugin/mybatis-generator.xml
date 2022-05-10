@@ -28,6 +28,7 @@
         <!-- 数据Model属性对应Column获取插件 -->
         <plugin type="com.higlowx.mybatis.generator.plugins.ModelColumnPlugin"/>
 
+
         <!--jdbc的数据库连接 -->
         <jdbcConnection driverClass="${driver}" connectionURL="${url}" userId="${username}" password="${password}" />
         <!-- Model模型生成器,用来生成含有主键key的类，记录类 以及查询Example类

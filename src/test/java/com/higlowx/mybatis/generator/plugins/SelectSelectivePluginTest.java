@@ -1,19 +1,3 @@
-/*
- * Copyright (c) 2017.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
 package com.higlowx.mybatis.generator.plugins;
 
 import com.higlowx.mybatis.generator.plugins.tools.*;
@@ -23,8 +7,12 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import org.mybatis.generator.api.GeneratedJavaFile;
 import org.mybatis.generator.api.MyBatisGenerator;
+import org.mybatis.generator.exception.InvalidConfigurationException;
+import org.mybatis.generator.exception.XMLParserException;
 
+import java.io.IOException;
 import java.lang.reflect.Array;
+import java.sql.SQLException;
 import java.util.List;
 
 public class SelectSelectivePluginTest {
@@ -104,6 +92,7 @@ public class SelectSelectivePluginTest {
             }
         });
         // 测试Selective不传
+        tool = MyBatisGeneratorTool.create("scripts/SelectSelectivePlugin/mybatis-generator.xml");
         tool.generate(() -> DBHelper.resetDB("scripts/SelectSelectivePlugin/init.sql"), new AbstractShellCallback() {
             @Override
             public void reloadProject(SqlSession sqlSession, ClassLoader loader, String packagz) throws Exception {
@@ -127,6 +116,7 @@ public class SelectSelectivePluginTest {
             }
         });
         // 测试WithBLOBs的情况
+        tool = MyBatisGeneratorTool.create("scripts/SelectSelectivePlugin/mybatis-generator.xml");
         tool.generate(() -> DBHelper.resetDB("scripts/SelectSelectivePlugin/init.sql"), new AbstractShellCallback() {
             @Override
             public void reloadProject(SqlSession sqlSession, ClassLoader loader, String packagz) throws Exception {
@@ -160,6 +150,7 @@ public class SelectSelectivePluginTest {
             }
         });
         // 测试Key的情况
+        tool = MyBatisGeneratorTool.create("scripts/SelectSelectivePlugin/mybatis-generator.xml");
         tool.generate(() -> DBHelper.resetDB("scripts/SelectSelectivePlugin/init.sql"), new AbstractShellCallback() {
             @Override
             public void reloadProject(SqlSession sqlSession, ClassLoader loader, String packagz) throws Exception {
@@ -195,6 +186,7 @@ public class SelectSelectivePluginTest {
     }
 
     /**
+     * TODO line 224: selectByPrimaryKeySelective not found
      * 测试生成的方法
      *
      * @throws Exception
@@ -237,6 +229,7 @@ public class SelectSelectivePluginTest {
             }
         });
         // 测试Selective不传
+        tool = MyBatisGeneratorTool.create("scripts/SelectSelectivePlugin/mybatis-generator.xml");
         tool.generate(() -> DBHelper.resetDB("scripts/SelectSelectivePlugin/init.sql"), new AbstractShellCallback() {
             @Override
             public void reloadProject(SqlSession sqlSession, ClassLoader loader, String packagz) throws Exception {
@@ -255,6 +248,7 @@ public class SelectSelectivePluginTest {
             }
         });
         // 测试WithBLOBs的情况
+        tool = MyBatisGeneratorTool.create("scripts/SelectSelectivePlugin/mybatis-generator.xml");
         tool.generate(() -> DBHelper.resetDB("scripts/SelectSelectivePlugin/init.sql"), new AbstractShellCallback() {
             @Override
             public void reloadProject(SqlSession sqlSession, ClassLoader loader, String packagz) throws Exception {
@@ -283,6 +277,7 @@ public class SelectSelectivePluginTest {
             }
         });
         // 测试Key的情况
+        tool = MyBatisGeneratorTool.create("scripts/SelectSelectivePlugin/mybatis-generator.xml");
         tool.generate(() -> DBHelper.resetDB("scripts/SelectSelectivePlugin/init.sql"), new AbstractShellCallback() {
             @Override
             public void reloadProject(SqlSession sqlSession, ClassLoader loader, String packagz) throws Exception {
@@ -325,13 +320,13 @@ public class SelectSelectivePluginTest {
     public void testSelectOneByExampleSelective() throws Exception {
         // 没有配置SelectOneByExamplePlugin插件时不生成对应方法
         MyBatisGeneratorTool tool = MyBatisGeneratorTool.create("scripts/SelectSelectivePlugin/mybatis-generator.xml");
-//        MyBatisGenerator myBatisGenerator = tool.generate();
-//        List<GeneratedJavaFile> list = myBatisGenerator.getGeneratedJavaFiles();
-//        for (GeneratedJavaFile file : list) {
-//            if (file.getFileName().equals("TbMapper.java")) {
-//                Assert.assertFalse(file.getFormattedContent().matches(".*selectByExampleSelective.*"));
-//            }
-//        }
+        MyBatisGenerator myBatisGenerator = tool.generate();
+        List<GeneratedJavaFile> list = myBatisGenerator.getGeneratedJavaFiles();
+        for (GeneratedJavaFile file : list) {
+            if (file.getFileName().equals("TbMapper.java")) {
+                Assert.assertFalse(file.getFormattedContent().matches(".*selectByExampleSelective.*"));
+            }
+        }
 
         // 配置了SelectOneByExamplePlugin
         tool = MyBatisGeneratorTool.create("scripts/SelectSelectivePlugin/mybatis-generator-with-SelectOneByExamplePlugin.xml");
@@ -363,6 +358,7 @@ public class SelectSelectivePluginTest {
         });
 
         // 测试Selective不传
+        tool = MyBatisGeneratorTool.create("scripts/SelectSelectivePlugin/mybatis-generator-with-SelectOneByExamplePlugin.xml");
         tool.generate(() -> DBHelper.resetDB("scripts/SelectSelectivePlugin/init.sql"), new AbstractShellCallback() {
             @Override
             public void reloadProject(SqlSession sqlSession, ClassLoader loader, String packagz) throws Exception {
@@ -384,7 +380,9 @@ public class SelectSelectivePluginTest {
                 Assert.assertEquals(result.get("field2"), 4);
             }
         });
+
         // 测试WithBLOBs的情况
+        tool = MyBatisGeneratorTool.create("scripts/SelectSelectivePlugin/mybatis-generator-with-SelectOneByExamplePlugin.xml");
         tool.generate(() -> DBHelper.resetDB("scripts/SelectSelectivePlugin/init.sql"), new AbstractShellCallback() {
             @Override
             public void reloadProject(SqlSession sqlSession, ClassLoader loader, String packagz) throws Exception {
@@ -417,6 +415,7 @@ public class SelectSelectivePluginTest {
             }
         });
         // 测试Key的情况
+        tool = MyBatisGeneratorTool.create("scripts/SelectSelectivePlugin/mybatis-generator-with-SelectOneByExamplePlugin.xml");
         tool.generate(() -> DBHelper.resetDB("scripts/SelectSelectivePlugin/init.sql"), new AbstractShellCallback() {
             @Override
             public void reloadProject(SqlSession sqlSession, ClassLoader loader, String packagz) throws Exception {
@@ -450,6 +449,7 @@ public class SelectSelectivePluginTest {
             }
         });
     }
+
 
     /**
      * 测试生成的方法
