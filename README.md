@@ -1,1 +1,1 @@
-# Mybatis Generator Plugins Extension
+# Mybatis Generator Maven Plugin Extension

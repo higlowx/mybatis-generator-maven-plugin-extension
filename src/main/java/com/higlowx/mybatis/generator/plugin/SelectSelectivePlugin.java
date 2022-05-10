@@ -1,8 +1,8 @@
-package com.higlowx.mybatis.generator.plugins;
+package com.higlowx.mybatis.generator.plugin;
 
-import com.higlowx.mybatis.generator.plugins.hook.ISelectOneByExamplePluginHook;
-import com.higlowx.mybatis.generator.plugins.hook.ISelectSelectivePluginHook;
-import com.higlowx.mybatis.generator.plugins.tools.*;
+import com.higlowx.mybatis.generator.plugin.hook.ISelectOneByExamplePluginHook;
+import com.higlowx.mybatis.generator.plugin.hook.ISelectSelectivePluginHook;
+import com.higlowx.mybatis.generator.plugin.tools.*;
 import org.mybatis.generator.api.IntrospectedColumn;
 import org.mybatis.generator.api.IntrospectedTable;
 import org.mybatis.generator.api.dom.java.FullyQualifiedJavaType;

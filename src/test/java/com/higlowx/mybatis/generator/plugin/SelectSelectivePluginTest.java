@@ -1,18 +1,14 @@
-package com.higlowx.mybatis.generator.plugins;
+package com.higlowx.mybatis.generator.plugin;
 
-import com.higlowx.mybatis.generator.plugins.tools.*;
+import com.higlowx.mybatis.generator.plugin.tools.*;
 import org.apache.ibatis.session.SqlSession;
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.mybatis.generator.api.GeneratedJavaFile;
 import org.mybatis.generator.api.MyBatisGenerator;
-import org.mybatis.generator.exception.InvalidConfigurationException;
-import org.mybatis.generator.exception.XMLParserException;
 
-import java.io.IOException;
 import java.lang.reflect.Array;
-import java.sql.SQLException;
 import java.util.List;
 
 public class SelectSelectivePluginTest {

@@ -1,4 +1,4 @@
-package com.higlowx.mybatis.generator.plugins.tools;
+package com.higlowx.mybatis.generator.plugin.tools;
 
 import org.mybatis.generator.api.IntrospectedTable;
 import org.mybatis.generator.api.dom.java.*;

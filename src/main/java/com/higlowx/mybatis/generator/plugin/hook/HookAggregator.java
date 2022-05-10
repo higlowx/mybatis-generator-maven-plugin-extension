@@ -1,7 +1,6 @@
-package com.higlowx.mybatis.generator.plugins.hook;
+package com.higlowx.mybatis.generator.plugin.hook;
 
-import com.higlowx.mybatis.generator.plugins.tools.BeanUtils;
-import org.mybatis.generator.api.CompositePlugin;
+import com.higlowx.mybatis.generator.plugin.tools.BeanUtils;
 import org.mybatis.generator.api.IntrospectedTable;
 import org.mybatis.generator.api.Plugin;
 import org.mybatis.generator.api.dom.java.InnerEnum;

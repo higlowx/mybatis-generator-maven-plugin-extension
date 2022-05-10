@@ -1,6 +1,5 @@
-package com.higlowx.mybatis.generator.plugins.tools;
+package com.higlowx.mybatis.generator.plugin.tools;
 
-import com.mysql.cj.jdbc.ha.RandomBalanceStrategy;
 import org.apache.ibatis.datasource.pooled.PooledDataSourceFactory;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.mapping.Environment;
@@ -31,11 +30,10 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.Random;
 
 
 public class MyBatisGeneratorTool {
-    public final static String DAO_PACKAGE = "com.higlowx.mybatis.generator.plugins.dao";    // dao package
+    public final static String DAO_PACKAGE = "com.higlowx.mybatis.generator.plugin.dao";    // dao package
     private List<String> warnings;  // 提示信息
     private Configuration config;   // 配置信息
     private String targetProject;  // 目标

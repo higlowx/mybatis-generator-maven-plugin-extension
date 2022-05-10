@@ -25,11 +25,11 @@
     <context id="default" targetRuntime="MyBatis3">
         <!-- 插件 -->
         <!-- Select Selective插件 -->
-        <plugin type="com.higlowx.mybatis.generator.plugins.SelectSelectivePlugin"/>
+        <plugin type="com.higlowx.mybatis.generator.plugin.SelectSelectivePlugin"/>
         <!-- 数据Model属性对应Column获取插件 -->
-        <plugin type="com.higlowx.mybatis.generator.plugins.ModelColumnPlugin"/>
+        <plugin type="com.higlowx.mybatis.generator.plugin.ModelColumnPlugin"/>
         <!-- 查询单条数据插件 -->
-        <plugin type="com.higlowx.mybatis.generator.plugins.SelectOneByExamplePlugin"/>
+        <plugin type="com.higlowx.mybatis.generator.plugin.SelectOneByExamplePlugin"/>
 
         <!--jdbc的数据库连接 -->
         <jdbcConnection driverClass="${driver}" connectionURL="${url}" userId="${username}" password="${password}" />

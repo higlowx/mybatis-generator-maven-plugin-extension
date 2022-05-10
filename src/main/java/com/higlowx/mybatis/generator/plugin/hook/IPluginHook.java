@@ -1,4 +1,4 @@
-package com.higlowx.mybatis.generator.plugins.hook;
+package com.higlowx.mybatis.generator.plugin.hook;
 
 /**
  * @author Dylan.Li

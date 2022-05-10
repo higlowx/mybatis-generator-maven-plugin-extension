@@ -1,6 +1,6 @@
-package com.higlowx.mybatis.generator.plugins.tools;
+package com.higlowx.mybatis.generator.plugin.tools;
 
-import com.higlowx.mybatis.generator.plugins.ModelColumnPlugin;
+import com.higlowx.mybatis.generator.plugin.ModelColumnPlugin;
 import org.mybatis.generator.api.CommentGenerator;
 import org.mybatis.generator.api.IntrospectedTable;
 import org.mybatis.generator.api.dom.java.*;

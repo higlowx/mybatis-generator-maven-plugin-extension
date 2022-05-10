@@ -1,4 +1,4 @@
-package com.higlowx.mybatis.generator.plugins.hook;
+package com.higlowx.mybatis.generator.plugin.hook;
 
 import org.mybatis.generator.api.IntrospectedTable;
 import org.mybatis.generator.api.dom.java.InnerEnum;

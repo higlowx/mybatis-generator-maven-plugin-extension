@@ -1,4 +1,4 @@
-package com.higlowx.mybatis.generator.plugins.tools;
+package com.higlowx.mybatis.generator.plugin.tools;
 
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;

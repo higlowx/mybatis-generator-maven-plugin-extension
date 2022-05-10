@@ -1,10 +1,10 @@
-package com.higlowx.mybatis.generator.plugins;
+package com.higlowx.mybatis.generator.plugin;
 
-import com.higlowx.mybatis.generator.plugins.hook.IModelColumnPluginHook;
-import com.higlowx.mybatis.generator.plugins.tools.BasePlugin;
-import com.higlowx.mybatis.generator.plugins.tools.FormatTools;
-import com.higlowx.mybatis.generator.plugins.tools.JavaElementGeneratorTools;
-import com.higlowx.mybatis.generator.plugins.tools.PluginTools;
+import com.higlowx.mybatis.generator.plugin.hook.IModelColumnPluginHook;
+import com.higlowx.mybatis.generator.plugin.tools.BasePlugin;
+import com.higlowx.mybatis.generator.plugin.tools.FormatTools;
+import com.higlowx.mybatis.generator.plugin.tools.JavaElementGeneratorTools;
+import com.higlowx.mybatis.generator.plugin.tools.PluginTools;
 import org.mybatis.generator.api.IntrospectedColumn;
 import org.mybatis.generator.api.IntrospectedTable;
 import org.mybatis.generator.api.dom.java.*;

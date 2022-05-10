@@ -1,6 +1,6 @@
-package com.higlowx.mybatis.generator.plugins.tools;
+package com.higlowx.mybatis.generator.plugin.tools;
 
-import com.higlowx.mybatis.generator.plugins.hook.HookAggregator;
+import com.higlowx.mybatis.generator.plugin.hook.HookAggregator;
 import org.mybatis.generator.api.PluginAdapter;
 import org.mybatis.generator.config.Context;
 import org.mybatis.generator.internal.util.StringUtility;

@@ -1,4 +1,4 @@
-package com.higlowx.mybatis.generator.plugins.tools;
+package com.higlowx.mybatis.generator.plugin.tools;
 
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.mapping.BoundSql;

@@ -24,11 +24,11 @@
     <!--导入属性配置 -->
     <context id="default" targetRuntime="MyBatis3">
         <!-- 插件 -->
-        <plugin type="com.higlowx.mybatis.generator.plugins.UpsertPlugin">
+        <plugin type="com.higlowx.mybatis.generator.plugin.UpsertPlugin">
             <property name="allowMultiQueries" value="true"/>
         </plugin>
-        <plugin type="com.higlowx.mybatis.generator.plugins.SelectiveEnhancedPlugin"/>
-        <plugin type="com.higlowx.mybatis.generator.plugins.ModelColumnPlugin"/>
+        <plugin type="com.higlowx.mybatis.generator.plugin.SelectiveEnhancedPlugin"/>
+        <plugin type="com.higlowx.mybatis.generator.plugin.ModelColumnPlugin"/>
 
         <!--jdbc的数据库连接 -->
         <jdbcConnection driverClass="${driver}" connectionURL="${url}" userId="${username}" password="${password}" />
