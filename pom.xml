@@ -137,13 +137,9 @@
             </build>
             <distributionManagement>
                 <repository>
-                    <id>rdc-releases</id>
-                    <url></url>
+                    <id>github</id>
+                    <url>https://maven.pkg.github.com/higlowx/mybatis-generator-plugin-extension</url>
                 </repository>
-                <snapshotRepository>
-                    <id>rdc-snapshots</id>
-                    <url></url>
-                </snapshotRepository>
             </distributionManagement>
         </profile>
     </profiles>
