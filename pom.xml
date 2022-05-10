@@ -8,72 +8,74 @@
     <artifactId>mybatis-generator-plugin-extension</artifactId>
     <version>${revision}</version>
 
+    <developers>
+        <developer>
+            <name>Dylan.Li</name>
+            <email>higlowx@gmail.com</email>
+            <organization>higlowx</organization>
+            <organizationUrl>https://higlowx.com</organizationUrl>
+            <timezone>+8</timezone>
+        </developer>
+    </developers>
+
+    <scm>
+        <connection>scm:git:https://github.com/higlowx/mybatis-generator-maven-plugin-extension.git</connection>
+        <developerConnection>scm:git:https://github.com/higlowx/mybatis-generator-maven-plugin-extension.git
+        </developerConnection>
+        <url>https://github.com/higlowx/mybatis-generator-maven-plugin-extension</url>
+        <tag>${revision}</tag>
+    </scm>
+
     <properties>
         <revision>0.1.0-1.4.1</revision>
+
+        <mbg.version>1.4.1</mbg.version>
 
         <java.version>1.8</java.version>
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+
         <plugin.maven-compiler-plugin.version>3.8.1</plugin.maven-compiler-plugin.version>
         <plugin.maven-source-plugin.version>3.2.1</plugin.maven-source-plugin.version>
         <plugin.maven-javadoc-plugin.version>3.2.0</plugin.maven-javadoc-plugin.version>
     </properties>
+
     <dependencies>
-        <!-- mybatis generator -->
         <dependency>
             <groupId>org.mybatis.generator</groupId>
             <artifactId>mybatis-generator-core</artifactId>
-            <version>1.4.1</version>
+            <version>${mbg.version}</version>
             <scope>provided</scope>
         </dependency>
-        <!-- 日志 -->
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
-            <version>1.7.22</version>
+            <version>1.7.36</version>
         </dependency>
         <dependency>
-            <groupId>com.alibaba</groupId>
-            <artifactId>fastjson</artifactId>
-            <version>1.2.76</version>
-        </dependency>
-        <!-- 模板引擎 -->
-        <dependency>
-            <groupId>org.freemarker</groupId>
-            <artifactId>freemarker</artifactId>
-            <version>2.3.26-incubating</version>
-        </dependency>
-        <!-- xml 解析 -->
-        <dependency>
-            <groupId>dom4j</groupId>
-            <artifactId>dom4j</artifactId>
-            <version>1.6.1</version>
-        </dependency>
-        <!-- junit -->
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.13.1</version>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter</artifactId>
+            <version>5.8.2</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.mybatis</groupId>
             <artifactId>mybatis</artifactId>
-            <version>3.5.6</version>
+            <version>3.5.9</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
-            <version>1.2.0</version>
+            <version>1.2.11</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
-            <version>8.0.16</version>
+            <version>8.0.29</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
@@ -135,12 +137,6 @@
                     </plugin>
                 </plugins>
             </build>
-            <distributionManagement>
-                <repository>
-                    <id>github</id>
-                    <url>https://maven.pkg.github.com/higlowx/mybatis-generator-plugin-extension</url>
-                </repository>
-            </distributionManagement>
         </profile>
     </profiles>
 

@@ -1,7 +1,22 @@
+/*
+ * Copyright (c) Higlowx 2022.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package com.higlowx.mybatis.generator.plugin.tools;
 
 import org.apache.ibatis.session.SqlSession;
-import org.junit.Assert;
+import org.junit.jupiter.api.Assertions;
 import org.mybatis.generator.api.ShellCallback;
 import org.mybatis.generator.exception.ShellException;
 
@@ -15,6 +30,7 @@ public abstract class AbstractShellCallback implements ShellCallback {
 
     /**
      * Setter method for property <tt>tool</tt>.
+     *
      * @param tool value to be assigned to property tool
      * @author hewei
      */
@@ -24,21 +40,23 @@ public abstract class AbstractShellCallback implements ShellCallback {
 
     /**
      * 动态编译
+     *
      * @param project
      */
     @Override
     public void refreshProject(String project) {
         // 编译项目
-        try (SqlSession sqlSession = tool.compile()){
+        try (SqlSession sqlSession = tool.compile()) {
             reloadProject(sqlSession, tool.getTargetClassLoader(), tool.getTargetPackage());
         } catch (Exception e) {
             e.printStackTrace();
-            Assert.assertTrue(false);
+            Assertions.fail();
         }
     }
 
     /**
      * 重载项目
+     *
      * @param sqlSession
      * @param loader
      * @param packagz
@@ -47,8 +65,8 @@ public abstract class AbstractShellCallback implements ShellCallback {
     public abstract void reloadProject(SqlSession sqlSession, ClassLoader loader, String packagz) throws Exception;
 
     /* (non-Javadoc)
-         * @see org.mybatis.generator.api.ShellCallback#getDirectory(java.lang.String, java.lang.String)
-         */
+     * @see org.mybatis.generator.api.ShellCallback#getDirectory(java.lang.String, java.lang.String)
+     */
     public File getDirectory(String targetProject, String targetPackage) throws ShellException {
         // targetProject is interpreted as a directory that must exist
         //

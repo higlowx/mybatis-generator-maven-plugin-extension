@@ -1,3 +1,18 @@
+/*
+ * Copyright (c) Higlowx 2022.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package com.higlowx.mybatis.generator.plugin.hook;
 
 import com.higlowx.mybatis.generator.plugin.tools.BeanUtils;
@@ -18,10 +33,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 扩展插件Hook聚合器
+ * Extended Plugin Hook Aggregator
  *
  * @author Dylan.Li
- * @date 2022/5/7
  */
 public class HookAggregator implements ISelectSelectivePluginHook, ISelectOneByExamplePluginHook, IModelColumnPluginHook {
 
@@ -29,26 +43,14 @@ public class HookAggregator implements ISelectSelectivePluginHook, ISelectOneByE
     private final static HookAggregator INSTANCE = new HookAggregator();
     private Context context;
 
-    /**
-     * constructor
-     */
+
     public HookAggregator() {
     }
 
-    /**
-     * Getter method for property <tt>instance</tt>.
-     *
-     * @return property value of instance
-     */
     public static HookAggregator getInstance() {
         return INSTANCE;
     }
 
-    /**
-     * Setter method for property <tt>context</tt>.
-     *
-     * @param context value to be assigned to property context
-     */
     public void setContext(Context context) {
         this.context = context;
     }
@@ -60,7 +62,7 @@ public class HookAggregator implements ISelectSelectivePluginHook, ISelectOneByE
     @SuppressWarnings("unchecked")
     private <T extends IPluginHook> List<T> getPluginsWithIPluginHook(Class<T> clazz) {
         List<T> list = new ArrayList<>();
-        // 反射获取插件列表，不能用单例去弄，不然因为类释放的问题而导致测试用例出问题
+
         try {
             PluginAggregator pluginAggregator = (PluginAggregator) this.context.getPlugins();
             List<Plugin> plugins = (List<Plugin>) BeanUtils.getProperty(pluginAggregator, "plugins");
@@ -73,10 +75,11 @@ public class HookAggregator implements ISelectSelectivePluginHook, ISelectOneByE
         } catch (Exception e) {
             logger.error("获取插件列表失败！", e);
         }
+
         return list;
     }
 
-    // ============================================= ISelectSelectivePluginHook ==============================================
+    // ISelectSelectivePluginHook
 
     @Override
     public boolean sqlMapSelectByExampleSelectiveElementGenerated(Document document, XmlElement element, IntrospectedTable introspectedTable) {
@@ -88,7 +91,7 @@ public class HookAggregator implements ISelectSelectivePluginHook, ISelectOneByE
         return true;
     }
 
-    // ============================================= IModelColumnPluginHook ==============================================
+    // IModelColumnPluginHook
 
     @Override
     public boolean modelColumnEnumGenerated(InnerEnum innerEnum, TopLevelClass topLevelClass, IntrospectedTable introspectedTable) {
@@ -100,7 +103,7 @@ public class HookAggregator implements ISelectSelectivePluginHook, ISelectOneByE
         return true;
     }
 
-    // ============================================= ISelectOneByExamplePluginHook ==============================================
+    // ISelectOneByExamplePluginHook
 
     @Override
     public boolean clientSelectOneByExampleWithBLOBsMethodGenerated(Method method, Interface interfaze, IntrospectedTable introspectedTable) {
