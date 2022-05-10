@@ -62,7 +62,7 @@ If you configured all 3 plugins, method `selectByExampleSelective()`, `selectOne
 
 ## Acknowledging
 
-This project derived from [mybatis-generator-plugin](https://github.com/itfsw/mybatis-generator-plugin). Unfortunately, it's almost stagnant.
+This project derived from [mybatis-generator-plugin](https://github.com/itfsw/mybatis-generator-plugin) supported for official maven plugin before v1.3.7. Unfortunately, for official newer version it's almost stagnant.
 I create this project therefore.
 
 
