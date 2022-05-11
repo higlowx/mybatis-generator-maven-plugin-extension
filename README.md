@@ -33,7 +33,7 @@
                 </dependency>
                 <dependency>
                     <groupId>com.higlowx</groupId>
-                    <artifactId>mybatis-generator-plugin-extension</artifactId>
+                    <artifactId>mybatis-generator-maven-plugin-extension</artifactId>
                     <version>0.1.0-1.4.1</version>
                 </dependency>
             </dependencies>
