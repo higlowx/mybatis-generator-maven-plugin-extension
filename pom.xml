@@ -40,7 +40,7 @@
     </issueManagement>
 
     <properties>
-        <revision>0.1.1-1.4.1-SNAPSHOT</revision>
+        <revision>0.1.1-1.4.1</revision>
 
         <mbg.version>1.4.1</mbg.version>
 
