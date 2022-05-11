@@ -33,8 +33,8 @@
                 </dependency>
                 <dependency>
                     <groupId>com.higlowx</groupId>
-                    <artifactId>mybatis-generator-plugin-extension</artifactId>
-                    <version>0.1.0-1.4.1</version>
+                    <artifactId>mybatis-generator-maven-plugin-extension</artifactId>
+                    <version>0.1.1-1.4.1</version>
                 </dependency>
             </dependencies>
         </plugin>
@@ -59,6 +59,11 @@ If you configured all 3 plugins, method `selectByExampleSelective()`, `selectOne
 
 4. Test generated client and sql mapper.
 
+
+## Change Log
+
+Usually, [Releases Page](https://github.com/higlowx/mybatis-generator-maven-plugin-extension/releases) reports main changes.
+You can also find more specific them in [Change Log](docs/CHANGELOG.md).
 
 ## Acknowledging
 

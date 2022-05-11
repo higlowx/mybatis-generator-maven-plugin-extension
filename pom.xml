@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.higlowx</groupId>
-    <artifactId>mybatis-generator-plugin-extension</artifactId>
+    <artifactId>mybatis-generator-maven-plugin-extension</artifactId>
     <version>${revision}</version>
-    <name>Mybatis Generator Plugin Extension</name>
-    <description>Mybatis Generator Plugin Extension</description>
+    <name>Mybatis Generator Maven Plugin Extension</name>
+    <description>Mybatis Generator Maven Plugin Extension</description>
     <url>https://github.com/higlowx/mybatis-generator-maven-plugin-extension</url>
 
     <developers>
@@ -31,10 +32,15 @@
         <developerConnection>scm:git:https://github.com/higlowx/mybatis-generator-maven-plugin-extension.git
         </developerConnection>
         <url>https://github.com/higlowx/mybatis-generator-maven-plugin-extension</url>
-  </scm>
+    </scm>
+
+    <issueManagement>
+        <system>GitHub Issue Management</system>
+        <url>https://github.com/higlowx/mybatis-generator-maven-plugin-extension/issues</url>
+    </issueManagement>
 
     <properties>
-        <revision>0.1.0-1.4.1</revision>
+        <revision>0.1.1-1.4.1</revision>
 
         <mbg.version>1.4.1</mbg.version>
 
