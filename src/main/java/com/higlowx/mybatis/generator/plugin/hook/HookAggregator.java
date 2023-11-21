@@ -38,7 +38,7 @@ import java.util.List;
  *
  * @author Dylan.Li
  */
-public class HookAggregator implements ISelectSelectivePluginHook, ISelectOneByExamplePluginHook, IModelColumnPluginHook {
+public class HookAggregator implements ISelectSelectivePluginHook, ISelectOneByExamplePluginHook, IModelColumnPluginHook, IUpdateSelectiveEnhancedPluginHook {
 
     private final static Logger logger = LoggerFactory.getLogger(HookAggregator.class);
     private final static HookAggregator INSTANCE = new HookAggregator();
@@ -140,6 +140,46 @@ public class HookAggregator implements ISelectSelectivePluginHook, ISelectOneByE
     public boolean sqlMapSelectOneByExampleWithBLOBsElementGenerated(Document document, XmlElement element, IntrospectedTable introspectedTable) {
         for (ISelectOneByExamplePluginHook plugin : this.getPluginsWithIPluginHook(ISelectOneByExamplePluginHook.class)) {
             if (!plugin.sqlMapSelectOneByExampleWithBLOBsElementGenerated(document, element, introspectedTable)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    @Override
+    public boolean clientUpdateByExampleSelectiveColumnMethodGenerated(Method method, Interface interfaze, IntrospectedTable introspectedTable) {
+        for (IUpdateSelectiveEnhancedPluginHook plugin : this.getPluginsWithIPluginHook(IUpdateSelectiveEnhancedPluginHook.class)) {
+            if (!plugin.clientUpdateByExampleSelectiveColumnMethodGenerated(method,interfaze,introspectedTable)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    @Override
+    public boolean clientUpdateByPrimaryKeySelectiveColumnMethodGenerated(Method method, Interface interfaze, IntrospectedTable introspectedTable) {
+        for (IUpdateSelectiveEnhancedPluginHook plugin : this.getPluginsWithIPluginHook(IUpdateSelectiveEnhancedPluginHook.class)) {
+            if (!plugin.clientUpdateByPrimaryKeySelectiveColumnMethodGenerated(method,interfaze,introspectedTable)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    @Override
+    public boolean sqlMapUpdateByExampleSelectiveColumnElementGenerated(Document document, XmlElement element, IntrospectedTable introspectedTable) {
+        for (IUpdateSelectiveEnhancedPluginHook plugin : this.getPluginsWithIPluginHook(IUpdateSelectiveEnhancedPluginHook.class)) {
+            if (!plugin.sqlMapUpdateByExampleSelectiveColumnElementGenerated(document,element,introspectedTable)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    @Override
+    public boolean sqlMapUpdateByPrimaryKeySelectiveColumnElementGenerated(Document document, XmlElement element, IntrospectedTable introspectedTable) {
+        for (IUpdateSelectiveEnhancedPluginHook plugin : this.getPluginsWithIPluginHook(IUpdateSelectiveEnhancedPluginHook.class)) {
+            if (!plugin.sqlMapUpdateByPrimaryKeySelectiveColumnElementGenerated(document,element,introspectedTable)) {
                 return false;
             }
         }
