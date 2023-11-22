@@ -35,6 +35,7 @@ import java.util.List;
 /**
  * @author wmq
  */
+@Deprecated
 public class SelectiveEnhancedPlugin extends BasePlugin {
 
     /**

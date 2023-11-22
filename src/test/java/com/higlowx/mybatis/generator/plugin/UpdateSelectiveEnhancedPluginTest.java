@@ -36,7 +36,8 @@ public class UpdateSelectiveEnhancedPluginTest {
         // 1. 没有配置ModelColumnPlugin插件
         MyBatisGeneratorTool tool = MyBatisGeneratorTool.create("scripts/UpdateSelectiveEnhancedPlugin/mybatis-generator-without-ModelColumnPlugin.xml");
         tool.generate();
-        Assertions.assertEquals(tool.getWarnings().get(0), "higlowx:插件com.higlowx.mybatis.generator.plugin.UpdateSelectiveEnhancedPlugin插件需配合com.higlowx.mybatis.generator.plugin.ModelColumnPlugin插件使用！");
+        Assertions.assertEquals(tool.getWarnings().get(0), "higlowx:插件com.higlowx.mybatis.generator.plugin.UpdateSelectiveEnhancedPlugin" +
+                "插件需配合com.higlowx.mybatis.generator.plugin.ModelEnumPlugin插件使用！");
     }
 
 
@@ -59,11 +60,11 @@ public class UpdateSelectiveEnhancedPluginTest {
                 tb.set("incF3", 10l);
                 tb.set("tsIncF2", 5l);
                 // selective
-                ObjectUtil TbColumnField1 = new ObjectUtil(loader, packagz + ".Tb$Column#field1");
-                ObjectUtil TbColumnTsIncF2 = new ObjectUtil(loader, packagz + ".Tb$Column#tsIncF2");
-                Object columns = Array.newInstance(TbColumnField1.getCls(), 2);
-                Array.set(columns, 0, TbColumnField1.getObject());
-                Array.set(columns, 1, TbColumnTsIncF2.getObject());
+                ObjectUtil TbEnumField1 = new ObjectUtil(loader, packagz + ".TbEnum#field1");
+                ObjectUtil TbEnumTsIncF2 = new ObjectUtil(loader, packagz + ".TbEnum#tsIncF2");
+                Object columns = Array.newInstance(TbEnumField1.getCls(), 2);
+                Array.set(columns, 0, TbEnumField1.getObject());
+                Array.set(columns, 1, TbEnumTsIncF2.getObject());
 
                 // sql
                 String sql = SqlHelper.getFormatMapperSql(tbMapper.getObject(), "updateByExampleSelectiveColumn", tb.getObject(), TbExample.getObject(), columns);
@@ -90,11 +91,11 @@ public class UpdateSelectiveEnhancedPluginTest {
                 tb.set("incF3", 10l);
                 tb.set("tsIncF2", 5l);
                 // selective
-                ObjectUtil TbColumnField1 = new ObjectUtil(loader, packagz + ".Tb$Column#field1");
-                ObjectUtil TbColumnTsIncF2 = new ObjectUtil(loader, packagz + ".Tb$Column#tsIncF2");
-                Object columns = Array.newInstance(TbColumnField1.getCls(), 2);
-                Array.set(columns, 0, TbColumnField1.getObject());
-                Array.set(columns, 1, TbColumnTsIncF2.getObject());
+                ObjectUtil TbEnumField1 = new ObjectUtil(loader, packagz + ".TbEnum#field1");
+                ObjectUtil TbEnumTsIncF2 = new ObjectUtil(loader, packagz + ".TbEnum#tsIncF2");
+                Object columns = Array.newInstance(TbEnumField1.getCls(), 2);
+                Array.set(columns, 0, TbEnumField1.getObject());
+                Array.set(columns, 1, TbEnumTsIncF2.getObject());
 
                 // sql
                 String sql = SqlHelper.getFormatMapperSql(tbMapper.getObject(), "updateByPrimaryKeySelectiveColumn", tb.getObject(), columns);

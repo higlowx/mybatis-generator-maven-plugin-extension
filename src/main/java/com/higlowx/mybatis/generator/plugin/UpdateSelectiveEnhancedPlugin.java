@@ -13,6 +13,7 @@ import org.mybatis.generator.codegen.mybatis3.ListUtilities;
 
 import java.util.List;
 
+
 /**
  * .
  *
@@ -30,8 +31,8 @@ public class UpdateSelectiveEnhancedPlugin extends BasePlugin implements IUpdate
     @Override
     public boolean validate(List<String> warnings) {
         // 插件使用前提是使用了ModelColumnPlugin插件
-        if (!PluginTools.checkDependencyPlugin(this.context, ModelColumnPlugin.class)) {
-            warnings.add("higlowx:插件" + this.getClass().getTypeName() + "插件需配合" + ModelColumnPlugin.class.getTypeName() + "插件使用！");
+        if (!PluginTools.checkDependencyPlugin(this.context, ModelEnumPlugin.class)) {
+            warnings.add("higlowx:插件" + this.getClass().getTypeName() + "插件需配合" + ModelEnumPlugin.class.getTypeName() + "插件使用！");
             return false;
         }
 
@@ -57,7 +58,7 @@ public class UpdateSelectiveEnhancedPlugin extends BasePlugin implements IUpdate
         if (PluginTools.getHook(IUpdateSelectiveEnhancedPluginHook.class).clientUpdateByExampleSelectiveColumnMethodGenerated(methodNoKey, interfaze, introspectedTable)) {
             // interface 增加方法
             FormatTools.replaceGeneralMethodComment(this.context.getCommentGenerator(), methodNoKey, introspectedTable);
-            FormatTools.addMethodWithBestPosition(interfaze, methodNoKey);
+            FormatTools.addMethodWithBestPosition(interfaze, methodNoKey, introspectedTable);
         }
 
         // =================================================primaryKey======================================================
@@ -69,8 +70,14 @@ public class UpdateSelectiveEnhancedPlugin extends BasePlugin implements IUpdate
                 clientUpdateByPrimaryKeySelectiveColumnMethodGenerated(methodKey, interfaze, introspectedTable)) {
             // interface 增加方法
             FormatTools.replaceGeneralMethodComment(this.context.getCommentGenerator(), methodKey, introspectedTable);
-            FormatTools.addMethodWithBestPosition(interfaze, methodKey);
+            FormatTools.addMethodWithBestPosition(interfaze, methodKey, introspectedTable);
         }
+
+        // 生成的新类导包
+//        Set<FullyQualifiedJavaType> importTypes = new TreeSet<>();
+//        FullyQualifiedJavaType importEnum = new FullyQualifiedJavaType(introspectedTable.getRules().calculateAllFieldsClass().getFullyQualifiedName() + ModelEnumPlugin.ENUM);
+//        importTypes.add(importEnum);
+//        interfaze.addImportedTypes(importTypes);
 
         return super.clientGenerated(interfaze,introspectedTable);
     }
@@ -123,9 +130,8 @@ public class UpdateSelectiveEnhancedPlugin extends BasePlugin implements IUpdate
         // 找出全字段对应的Model
         FullyQualifiedJavaType fullFieldModel = introspectedTable.getRules().calculateAllFieldsClass();
         // column枚举
-        FullyQualifiedJavaType selectiveType = new FullyQualifiedJavaType(fullFieldModel.getShortName() + "." + ModelColumnPlugin.ENUM_NAME);
+        FullyQualifiedJavaType selectiveType = new FullyQualifiedJavaType(fullFieldModel.getShortName() +  ModelEnumPlugin.ENUM);
         method.addParameter(new Parameter(selectiveType, "selective", "@Param(\"selective\")", true));
-
         return true;
     }
 
@@ -156,9 +162,10 @@ public class UpdateSelectiveEnhancedPlugin extends BasePlugin implements IUpdate
         // 找出全字段对应的Model
         FullyQualifiedJavaType fullFieldModel = introspectedTable.getRules().calculateAllFieldsClass();
         // column枚举
-        FullyQualifiedJavaType selectiveType = new FullyQualifiedJavaType(fullFieldModel.getShortName() + "." + ModelColumnPlugin.ENUM_NAME);
+        FullyQualifiedJavaType selectiveType = new FullyQualifiedJavaType(fullFieldModel.getShortName() +  ModelEnumPlugin.ENUM);
         method.addParameter(new Parameter(selectiveType, "selective", "@Param(\"selective\")", true));
-
+        // 生成的新类导包
+        interfaze.addImportedType(selectiveType);
         return true;
     }
 

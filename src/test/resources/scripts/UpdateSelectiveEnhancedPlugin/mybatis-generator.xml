@@ -24,7 +24,7 @@
     <!--导入属性配置 -->
     <context id="default" targetRuntime="MyBatis3">
         <!-- 插件 -->
-        <plugin type="com.higlowx.mybatis.generator.plugin.ModelColumnPlugin"/>
+        <plugin type="com.higlowx.mybatis.generator.plugin.ModelEnumPlugin"/>
         <plugin type="com.higlowx.mybatis.generator.plugin.UpdateSelectiveEnhancedPlugin"/>
         <commentGenerator type="com.higlowx.mybatis.generator.plugin.SimpleCommentGenerator">
         </commentGenerator>

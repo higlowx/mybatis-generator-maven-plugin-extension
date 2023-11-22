@@ -57,8 +57,8 @@ public class SelectSelectivePlugin extends BasePlugin implements ISelectOneByExa
     public boolean validate(List<String> warnings) {
 
         // 插件使用前提是使用了ModelColumnPlugin插件
-        if (!PluginTools.checkDependencyPlugin(this.context, ModelColumnPlugin.class)) {
-            warnings.add(this.getClass().getTypeName() + " 需配合 ModelColumnPlugin 使用");
+        if (!PluginTools.checkDependencyPlugin(this.context, ModelEnumPlugin.class)) {
+            warnings.add(this.getClass().getTypeName() + " 需配合 ModelEnumPlugin 使用");
             return false;
         }
 
@@ -85,7 +85,7 @@ public class SelectSelectivePlugin extends BasePlugin implements ISelectOneByExa
                 METHOD_SELECT_BY_EXAMPLE_SELECTIVE,
                 "@Param(\"example\")",
                 introspectedTable
-        ));
+        ),introspectedTable);
         return super.clientSelectByExampleWithBLOBsMethodGenerated(method, interfaze, introspectedTable);
     }
 
@@ -97,7 +97,7 @@ public class SelectSelectivePlugin extends BasePlugin implements ISelectOneByExa
                     METHOD_SELECT_BY_EXAMPLE_SELECTIVE,
                     "@Param(\"example\")",
                     introspectedTable
-            ));
+            ),introspectedTable);
         }
         return super.clientSelectByExampleWithoutBLOBsMethodGenerated(method, interfaze, introspectedTable);
     }
@@ -111,7 +111,7 @@ public class SelectSelectivePlugin extends BasePlugin implements ISelectOneByExa
                     METHOD_SELECT_BY_PRIMARY_KEY_SELECTIVE,
                     "@Param(\"record\")",
                     introspectedTable
-            ));
+            ),introspectedTable);
         } else {
             Method withSelective = JavaElementTools.clone(method);
 
@@ -126,7 +126,7 @@ public class SelectSelectivePlugin extends BasePlugin implements ISelectOneByExa
                     new Parameter(this.getModelColumnFullyQualifiedJavaType(introspectedTable), "selective", "@Param(\"selective\")", true)
             );
 
-            FormatTools.addMethodWithBestPosition(interfaze, withSelective);
+            FormatTools.addMethodWithBestPosition(interfaze, withSelective,introspectedTable);
         }
         return super.clientSelectByPrimaryKeyMethodGenerated(method, interfaze, introspectedTable);
     }
@@ -197,7 +197,7 @@ public class SelectSelectivePlugin extends BasePlugin implements ISelectOneByExa
                 METHOD_SELECT_ONE_BY_EXAMPLE_SELECTIVE,
                 "@Param(\"example\")",
                 introspectedTable
-        ));
+        ),introspectedTable);
         return true;
     }
 
@@ -209,7 +209,7 @@ public class SelectSelectivePlugin extends BasePlugin implements ISelectOneByExa
                     METHOD_SELECT_ONE_BY_EXAMPLE_SELECTIVE,
                     "@Param(\"example\")",
                     introspectedTable
-            ));
+            ),introspectedTable);
         }
         return true;
     }
@@ -371,6 +371,6 @@ public class SelectSelectivePlugin extends BasePlugin implements ISelectOneByExa
      * 获取ModelColumn type
      */
     private FullyQualifiedJavaType getModelColumnFullyQualifiedJavaType(IntrospectedTable introspectedTable) {
-        return new FullyQualifiedJavaType(introspectedTable.getRules().calculateAllFieldsClass().getShortName() + "." + ModelColumnPlugin.ENUM_NAME);
+        return new FullyQualifiedJavaType(introspectedTable.getRules().calculateAllFieldsClass().getShortName()  + ModelEnumPlugin.ENUM);
     }
 }
