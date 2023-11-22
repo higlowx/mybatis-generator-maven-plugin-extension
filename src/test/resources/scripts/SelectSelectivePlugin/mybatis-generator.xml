@@ -26,7 +26,7 @@
         <!-- Select Selective插件 -->
         <plugin type="com.higlowx.mybatis.generator.plugin.SelectSelectivePlugin"/>
         <!-- 数据Model属性对应Column获取插件 -->
-        <plugin type="com.higlowx.mybatis.generator.plugin.ModelColumnPlugin"/>
+        <plugin type="com.higlowx.mybatis.generator.plugin.ModelEnumPlugin"/>
 
 
         <!--jdbc的数据库连接 -->

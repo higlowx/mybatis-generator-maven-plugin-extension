@@ -54,7 +54,7 @@ public class SelectSelectivePluginTest {
                 criteria.invoke("andIdLessThan", 100l);
                 tbExample.set("orderByClause", "field2 asc");
 
-                ObjectUtil columnField1 = new ObjectUtil(loader, packagz + ".Tb$Column#field1");
+                ObjectUtil columnField1 = new ObjectUtil(loader, packagz + ".TbEnum#field1");
                 // java 动态参数不能有两个会冲突，最后一个封装成Array!!!必须使用反射创建指定类型数组，不然调用invoke对了可变参数会检查类型！
                 Object columns1 = Array.newInstance(columnField1.getCls(), 1);
                 Array.set(columns1, 0, columnField1.getObject());
@@ -62,7 +62,7 @@ public class SelectSelectivePluginTest {
                 String sql = SqlHelper.getFormatMapperSql(tbMapper.getObject(), "selectByExampleSelective", tbExample.getObject(), columns1);
                 Assertions.assertEquals(sql, "select field1 from tb WHERE ( id < '100' ) order by field2 asc");
 
-                ObjectUtil columnField2 = new ObjectUtil(loader, packagz + ".Tb$Column#field2");
+                ObjectUtil columnField2 = new ObjectUtil(loader, packagz + ".TbEnum#field2");
                 Object columns2 = Array.newInstance(columnField1.getCls(), 2);
                 Array.set(columns2, 0, columnField1.getObject());
                 Array.set(columns2, 1, columnField2.getObject());
@@ -140,8 +140,8 @@ public class SelectSelectivePluginTest {
 
                 // selective
                 // 从base model 和 WithBLOBs都各取一个，更有代表性
-                ObjectUtil columnId = new ObjectUtil(loader, packagz + ".TbBlobsWithBLOBs$Column#id");
-                ObjectUtil columnField2 = new ObjectUtil(loader, packagz + ".TbBlobsWithBLOBs$Column#field2");
+                ObjectUtil columnId = new ObjectUtil(loader, packagz + ".TbBlobsWithBLOBsEnum#id");
+                ObjectUtil columnField2 = new ObjectUtil(loader, packagz + ".TbBlobsWithBLOBsEnum#field2");
 
                 Object columns = Array.newInstance(columnId.getCls(), 2);
                 Array.set(columns, 0, columnId.getObject());
@@ -174,8 +174,8 @@ public class SelectSelectivePluginTest {
 
                 // selective
                 // 从base model 和 key model都各取一个，更有代表性
-                ObjectUtil columnKey1 = new ObjectUtil(loader, packagz + ".TbKeys$Column#key1");
-                ObjectUtil columnField1 = new ObjectUtil(loader, packagz + ".TbKeys$Column#field1");
+                ObjectUtil columnKey1 = new ObjectUtil(loader, packagz + ".TbKeysEnum#key1");
+                ObjectUtil columnField1 = new ObjectUtil(loader, packagz + ".TbKeysEnum#field1");
 
                 Object columns = Array.newInstance(columnKey1.getCls(), 2);
                 Array.set(columns, 0, columnKey1.getObject());
@@ -213,7 +213,7 @@ public class SelectSelectivePluginTest {
                 // 1. 测试sql
                 ObjectUtil tbMapper = new ObjectUtil(sqlSession.getMapper(loader.loadClass(packagz + ".TbMapper")));
 
-                ObjectUtil columnField1 = new ObjectUtil(loader, packagz + ".TbKeys$Column#field1");
+                ObjectUtil columnField1 = new ObjectUtil(loader, packagz + ".TbKeysEnum#field1");
                 // java 动态参数不能有两个会冲突，最后一个封装成Array!!!必须使用反射创建指定类型数组，不然调用invoke对了可变参数会检查类型！
                 Object columns1 = Array.newInstance(columnField1.getCls(), 1);
                 Array.set(columns1, 0, columnField1.getObject());
@@ -227,7 +227,7 @@ public class SelectSelectivePluginTest {
                 tbKeysKey.set("key1", 1l);
                 tbKeysKey.set("key2", "2");
 
-                ObjectUtil columnField2 = new ObjectUtil(loader, packagz + ".TbKeys$Column#field2");
+                ObjectUtil columnField2 = new ObjectUtil(loader, packagz + ".TbKeysEnum#field2");
                 // java 动态参数不能有两个会冲突，最后一个封装成Array!!!必须使用反射创建指定类型数组，不然调用invoke对了可变参数会检查类型！
                 Object columns2 = Array.newInstance(columnField2.getCls(), 1);
                 Array.set(columns2, 0, columnField2.getObject());
@@ -268,8 +268,8 @@ public class SelectSelectivePluginTest {
 
                 // selective
                 // 从base model 和 WithBLOBs都各取一个，更有代表性
-                ObjectUtil columnId = new ObjectUtil(loader, packagz + ".TbBlobsWithBLOBs$Column#id");
-                ObjectUtil columnField2 = new ObjectUtil(loader, packagz + ".TbBlobsWithBLOBs$Column#field2");
+                ObjectUtil columnId = new ObjectUtil(loader, packagz + ".TbBlobsWithBLOBsEnum#id");
+                ObjectUtil columnField2 = new ObjectUtil(loader, packagz + ".TbBlobsWithBLOBsEnum#field2");
 
                 Object columns = Array.newInstance(columnId.getCls(), 2);
                 Array.set(columns, 0, columnId.getObject());
@@ -297,8 +297,8 @@ public class SelectSelectivePluginTest {
 
                 // selective
                 // 从base model 和 key model都各取一个，更有代表性
-                ObjectUtil columnKey1 = new ObjectUtil(loader, packagz + ".TbKeys$Column#key1");
-                ObjectUtil columnField1 = new ObjectUtil(loader, packagz + ".TbKeys$Column#field1");
+                ObjectUtil columnKey1 = new ObjectUtil(loader, packagz + ".TbKeysEnum#key1");
+                ObjectUtil columnField1 = new ObjectUtil(loader, packagz + ".TbKeysEnum#field1");
 
                 Object columns = Array.newInstance(columnKey1.getCls(), 2);
                 Array.set(columns, 0, columnKey1.getObject());
@@ -353,7 +353,7 @@ public class SelectSelectivePluginTest {
                 criteria.invoke("andIdEqualTo", 3l);
                 tbExample.set("orderByClause", "field2 asc");
 
-                ObjectUtil columnField1 = new ObjectUtil(loader, packagz + ".Tb$Column#field1");
+                ObjectUtil columnField1 = new ObjectUtil(loader, packagz + ".TbEnum#field1");
                 // java 动态参数不能有两个会冲突，最后一个封装成Array!!!必须使用反射创建指定类型数组，不然调用invoke对了可变参数会检查类型！
                 Object columns1 = Array.newInstance(columnField1.getCls(), 1);
                 Array.set(columns1, 0, columnField1.getObject());
@@ -406,8 +406,8 @@ public class SelectSelectivePluginTest {
 
                 // selective
                 // 从base model 和 WithBLOBs都各取一个，更有代表性
-                ObjectUtil columnId = new ObjectUtil(loader, packagz + ".TbBlobsWithBLOBs$Column#id");
-                ObjectUtil columnField2 = new ObjectUtil(loader, packagz + ".TbBlobsWithBLOBs$Column#field2");
+                ObjectUtil columnId = new ObjectUtil(loader, packagz + ".TbBlobsWithBLOBsEnum#id");
+                ObjectUtil columnField2 = new ObjectUtil(loader, packagz + ".TbBlobsWithBLOBsEnum#field2");
 
                 Object columns = Array.newInstance(columnId.getCls(), 2);
                 Array.set(columns, 0, columnId.getObject());
@@ -440,8 +440,8 @@ public class SelectSelectivePluginTest {
 
                 // selective
                 // 从base model 和 key model都各取一个，更有代表性
-                ObjectUtil columnKey1 = new ObjectUtil(loader, packagz + ".TbKeys$Column#key1");
-                ObjectUtil columnField1 = new ObjectUtil(loader, packagz + ".TbKeys$Column#field1");
+                ObjectUtil columnKey1 = new ObjectUtil(loader, packagz + ".TbKeysEnum#key1");
+                ObjectUtil columnField1 = new ObjectUtil(loader, packagz + ".TbKeysEnum#field1");
 
                 Object columns = Array.newInstance(columnKey1.getCls(), 2);
                 Array.set(columns, 0, columnKey1.getObject());
@@ -482,7 +482,7 @@ public class SelectSelectivePluginTest {
                 criteria.invoke("andIdLessThan", 100l);
                 tbExample.set("orderByClause", "field1 asc");
 
-                ObjectUtil columnField1 = new ObjectUtil(loader, packagz + ".Tb$Column#tsF1");
+                ObjectUtil columnField1 = new ObjectUtil(loader, packagz + ".TbEnum#tsF1");
                 // java 动态参数不能有两个会冲突，最后一个封装成Array!!!必须使用反射创建指定类型数组，不然调用invoke对了可变参数会检查类型！
                 Object columns1 = Array.newInstance(columnField1.getCls(), 1);
                 Array.set(columns1, 0, columnField1.getObject());
@@ -490,7 +490,7 @@ public class SelectSelectivePluginTest {
                 String sql = SqlHelper.getFormatMapperSql(tbMapper.getObject(), "selectByExampleSelective", tbExample.getObject(), columns1);
                 Assertions.assertEquals(sql, "select field1 from tb WHERE ( id < '100' ) order by field1 asc");
 
-                ObjectUtil columnField2 = new ObjectUtil(loader, packagz + ".Tb$Column#field2");
+                ObjectUtil columnField2 = new ObjectUtil(loader, packagz + ".TbEnum#field2");
                 Object columns2 = Array.newInstance(columnField1.getCls(), 2);
                 Array.set(columns2, 0, columnField1.getObject());
                 Array.set(columns2, 1, columnField2.getObject());
@@ -536,7 +536,7 @@ public class SelectSelectivePluginTest {
                 criteria.invoke("andIdLessThan", 100l);
                 tbExample.set("orderByClause", "field1 asc");
 
-                ObjectUtil columnField1 = new ObjectUtil(loader, packagz + ".Tb$Column#tsF1");
+                ObjectUtil columnField1 = new ObjectUtil(loader, packagz + ".TbEnum#tsF1");
                 // java 动态参数不能有两个会冲突，最后一个封装成Array!!!必须使用反射创建指定类型数组，不然调用invoke对了可变参数会检查类型！
                 Object columns1 = Array.newInstance(columnField1.getCls(), 1);
                 Array.set(columns1, 0, columnField1.getObject());
@@ -544,7 +544,7 @@ public class SelectSelectivePluginTest {
                 String sql = SqlHelper.getFormatMapperSql(tbMapper.getObject(), "selectByExampleSelective", tbExample.getObject(), columns1);
                 Assertions.assertEquals(sql, "select field1 from tb WHERE ( id < '100' ) order by field1 asc");
 
-                ObjectUtil columnField2 = new ObjectUtil(loader, packagz + ".Tb$Column#field2");
+                ObjectUtil columnField2 = new ObjectUtil(loader, packagz + ".TbEnum#field2");
                 Object columns2 = Array.newInstance(columnField1.getCls(), 2);
                 Array.set(columns2, 0, columnField1.getObject());
                 Array.set(columns2, 1, columnField2.getObject());

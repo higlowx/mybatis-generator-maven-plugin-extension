@@ -16,6 +16,7 @@
 package com.higlowx.mybatis.generator.plugin.tools;
 
 import com.higlowx.mybatis.generator.plugin.ModelColumnPlugin;
+import com.higlowx.mybatis.generator.plugin.ModelEnumPlugin;
 import org.mybatis.generator.api.CommentGenerator;
 import org.mybatis.generator.api.IntrospectedTable;
 import org.mybatis.generator.api.dom.java.*;
@@ -51,7 +52,7 @@ public class FormatTools {
      * @param interfacz
      * @param method
      */
-    public static void addMethodWithBestPosition(Interface interfacz, Method method) {
+    public static void addMethodWithBestPosition(Interface interfacz, Method method, IntrospectedTable introspectedTable) {
         // import
         Set<FullyQualifiedJavaType> importTypes = new TreeSet<>();
         // 返回
@@ -70,6 +71,11 @@ public class FormatTools {
 
                     if (annotation.matches(".*selective.*") && parameter.getType().getShortName().equals(ModelColumnPlugin.ENUM_NAME)) {
                         flag = false;
+                    }
+                    // 枚举包
+                    if (annotation.matches(".*selective.*") && parameter.getType().getShortName().contains(ModelEnumPlugin.ENUM)) {
+                        FullyQualifiedJavaType importEnum = new FullyQualifiedJavaType(introspectedTable.getRules().calculateAllFieldsClass().getFullyQualifiedName() + ModelEnumPlugin.ENUM);
+                        importTypes.add(importEnum);
                     }
                 }
             }

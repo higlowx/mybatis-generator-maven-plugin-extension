@@ -65,7 +65,7 @@ public class SelectOneByExamplePlugin extends BasePlugin {
         // hook
         if (PluginTools.getHook(ISelectOneByExamplePluginHook.class).clientSelectOneByExampleWithBLOBsMethodGenerated(selectOneMethod, interfaze, introspectedTable)) {
             // interface 增加方法
-            FormatTools.addMethodWithBestPosition(interfaze, selectOneMethod);
+            FormatTools.addMethodWithBestPosition(interfaze, selectOneMethod,introspectedTable);
             logger.debug(interfaze.getType().getShortName() + "增加 selectOneByExampleWithBLOBs 方法");
         }
         return super.clientSelectByExampleWithBLOBsMethodGenerated(method, interfaze, introspectedTable);
@@ -88,7 +88,7 @@ public class SelectOneByExamplePlugin extends BasePlugin {
         // hook
         if (PluginTools.getHook(ISelectOneByExamplePluginHook.class).clientSelectOneByExampleWithoutBLOBsMethodGenerated(selectOneMethod, interfaze, introspectedTable)) {
             // interface 增加方法
-            FormatTools.addMethodWithBestPosition(interfaze, selectOneMethod);
+            FormatTools.addMethodWithBestPosition(interfaze, selectOneMethod,introspectedTable);
             logger.debug(interfaze.getType().getShortName() + "增加 selectOneByExample 方法");
         }
         return super.clientSelectByExampleWithoutBLOBsMethodGenerated(selectOneMethod, interfaze, introspectedTable);
